@@ -1,0 +1,10 @@
+---
+message: "This node is using common data"
+
+# Turn low so bug is shown
+puppet_enterprise::master::puppetserver::jruby_max_requests_per_instance: 10
+
+# Crank the heapsize down to try and cause the leak
+puppet_enterprise::profile::master::java_args:
+  Xmx: '1024m'
+  Xms: '1024m'

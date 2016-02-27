@@ -8,14 +8,14 @@ mod 'hiera',
   :tag => '2.0.1'
 
 # Change the version of hiera-eyaml you want to test with the server
-mod 'hiera-eyaml',
-  :git => 'https://github.com/petems/hiera-eyaml',
-  :ref => 'refactor_highline_import'
+# mod 'hiera-eyaml',
+#   :git => 'https://github.com/petems/hiera-eyaml',
+#   :ref => 'refactor_highline_import'
 
 # Switch to this for comparison with original
-# mod 'hiera-eyaml',
-#   :git => 'https://github.com/TomPoulton/hiera-eyaml',
-#   :tag => 'v2.0.8'
+mod 'hiera-eyaml',
+  :git => 'https://github.com/TomPoulton/hiera-eyaml',
+  :tag => 'v2.0.8'
 
 mod 'puppetlabs-puppetserver_gem',
   :git => 'https://github.com/puppetlabs/puppetlabs-puppetserver_gem',

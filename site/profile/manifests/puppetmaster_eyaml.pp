@@ -2,6 +2,25 @@ class profile::puppetmaster_eyaml {
 
   $hiera_yaml = "${::settings::confdir}/hiera.yaml"
 
+  file { '/etc/puppetlabs/puppet/ssl/eyaml/':
+    ensure => directory,
+  }
+  file { '/etc/puppetlabs/puppet/ssl/eyaml/private_key.pkcs7.pem':
+    ensure  => file,
+    mode    => '0600',
+    owner   => 'pe-puppet',
+    group   => 'pe-puppet',
+    source  => 'puppet:///modules/profiles/eyaml/private_key.pkcs7.pem',
+  }
+  ->
+  file { '/etc/puppetlabs/puppet/ssl/eyaml/public_key.pkcs7.pem':
+    ensure  => file,
+    mode    => '0644',
+    owner   => 'pe-puppet',
+    group   => 'pe-puppet',
+    source  => 'puppet:///modules/profiles/eyaml/public_key.pkcs7.pem',
+  }
+  ->
   class { '::hiera':
     hierarchy  => [
       'common',
@@ -9,14 +28,13 @@ class profile::puppetmaster_eyaml {
     ],
     logger            => 'console',
     eyaml             => true,
+    keysdir           => '/etc/puppetlabs/puppet/ssl/eyaml/',
     eyaml_version     => 'absent', #using control repo to manage
-    backends          => ['yaml', 'eyaml', 'redis'],
+    backends          => ['yaml', 'eyaml'],
     datadir           => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
     eyaml_datadir     => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
     datadir_manage    => false,
     create_keys       => false,
-    eyaml_private_key => 'puppet:///modules/profiles/keys/private_key.pkcs7.pem',
-    eyaml_public_key  => 'puppet:///modules/profiles/keys/public_key.pkcs7.pem',
     notify            => Service['pe-puppetserver'],
   }
 

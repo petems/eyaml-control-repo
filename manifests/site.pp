@@ -27,6 +27,7 @@ File { backup => false }
 
 node /master.vm/ {
   include ::profile::puppetmaster_eyaml
+  include ::profile::eyaml_notify
 }
 
 node default {

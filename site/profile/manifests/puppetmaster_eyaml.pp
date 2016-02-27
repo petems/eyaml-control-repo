@@ -25,7 +25,7 @@ class profile::puppetmaster_eyaml {
     ],
     logger             => 'console',
     eyaml              => true,
-    keysdir            => '/etc/puppetlabs/puppet/ssl/eyaml/',
+    keysdir            => '/etc/puppetlabs/puppet/ssl/eyaml',
     eyaml_version      => 'absent', #using control repo to manage
     backends           => ['yaml', 'eyaml'],
     datadir            => '/etc/puppetlabs/code/environments/%{environment}/hieradata',

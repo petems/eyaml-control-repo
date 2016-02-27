@@ -3,23 +3,23 @@ class profile::puppetmaster_eyaml {
   $hiera_yaml = "${::settings::confdir}/hiera.yaml"
 
   file { '/etc/puppetlabs/puppet/ssl/eyaml/private_key.pkcs7.pem':
-    ensure  => file,
-    mode    => '0600',
-    owner   => 'pe-puppet',
-    group   => 'pe-puppet',
-    source  => 'puppet:///modules/profile/eyaml/private_key.pkcs7.pem',
+    ensure => file,
+    mode   => '0600',
+    owner  => 'pe-puppet',
+    group  => 'pe-puppet',
+    source => 'puppet:///modules/profile/eyaml/private_key.pkcs7.pem',
   }
   ->
   file { '/etc/puppetlabs/puppet/ssl/eyaml/public_key.pkcs7.pem':
-    ensure  => file,
-    mode    => '0644',
-    owner   => 'pe-puppet',
-    group   => 'pe-puppet',
-    source  => 'puppet:///modules/profile/eyaml/public_key.pkcs7.pem',
+    ensure => file,
+    mode   => '0644',
+    owner  => 'pe-puppet',
+    group  => 'pe-puppet',
+    source => 'puppet:///modules/profile/eyaml/public_key.pkcs7.pem',
   }
   ->
   class { '::hiera':
-    hierarchy  => [
+    hierarchy          => [
       'common',
       'eyaml_common',
     ],

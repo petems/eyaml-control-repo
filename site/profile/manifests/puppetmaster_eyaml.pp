@@ -9,6 +9,7 @@ class profile::puppetmaster_eyaml {
     ],
     logger            => 'console',
     eyaml             => true,
+    eyaml_version     => 'absent', #using control repo to manage
     backends          => ['yaml', 'eyaml', 'redis'],
     datadir           => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
     eyaml_datadir     => '/etc/puppetlabs/code/environments/%{environment}/hieradata',

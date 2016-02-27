@@ -2,9 +2,6 @@ class profile::puppetmaster_eyaml {
 
   $hiera_yaml = "${::settings::confdir}/hiera.yaml"
 
-  file { '/etc/puppetlabs/puppet/ssl/eyaml/':
-    ensure => directory,
-  }
   file { '/etc/puppetlabs/puppet/ssl/eyaml/private_key.pkcs7.pem':
     ensure  => file,
     mode    => '0600',

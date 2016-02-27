@@ -23,16 +23,17 @@ class profile::puppetmaster_eyaml {
       'common',
       'eyaml_common',
     ],
-    logger            => 'console',
-    eyaml             => true,
-    keysdir           => '/etc/puppetlabs/puppet/ssl/eyaml/',
-    eyaml_version     => 'absent', #using control repo to manage
-    backends          => ['yaml', 'eyaml'],
-    datadir           => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
-    eyaml_datadir     => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
-    datadir_manage    => false,
-    create_keys       => false,
-    notify            => Service['pe-puppetserver'],
+    logger             => 'console',
+    eyaml              => true,
+    keysdir            => '/etc/puppetlabs/puppet/ssl/eyaml/',
+    eyaml_version      => 'absent', #using control repo to manage
+    backends           => ['yaml', 'eyaml'],
+    datadir            => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
+    eyaml_datadir      => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
+    datadir_manage     => false,
+    create_keys        => false,
+    puppet_conf_manage => false,
+    notify             => Service['pe-puppetserver'],
   }
 
   ini_setting { 'puppet.conf hiera_config main section' :

@@ -11,3 +11,7 @@ mod 'hiera',
 mod 'hiera-eyaml',
   :git => 'https://github.com/petems/hiera-eyaml',
   :ref => 'refactor_highline_import'
+
+mod 'puppetlabs-puppetserver_gem',
+  :git => 'https://github.com/puppetlabs/puppetlabs-puppetserver_gem',
+  :ref => '0d8da1d36a55f4cadde6b25a1e999923c77fc7b6'
